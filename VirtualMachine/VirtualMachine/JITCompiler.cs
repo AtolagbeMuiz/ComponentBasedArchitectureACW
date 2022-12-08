@@ -40,23 +40,27 @@ internal static class JITCompiler
             //--> Get all the loaded assemblies in this domain
             //--> Get the types of these assemblies
             //--> find the type that implement IInstruction interface
-            
-            //var interfacetarget = typeof(IInstruction);
 
-            //searches for the assembly that implement IInstruction using reflection and returns the first one found
-            //var assemblyInheritingIInstruction = AppDomain.CurrentDomain.GetAssemblies()
-            //    .SelectMany(s => s.GetTypes())
-            //    .Where(x => interfacetarget.IsAssignableFrom(x) && x.Name == opcode).FirstOrDefault();
 
-            //Type assemblyInheritingIInstruction = Type.GetType("SVM.SimpleMachineLanguage.WriteString");
+            //getting the defined C# types
+            var assemblyInheritingIInstruction = Assembly.GetExecutingAssembly().DefinedTypes.ToList();
 
-            //var assemblyInheritingIInstruction = (from asm in AppDomain.CurrentDomain.GetAssemblies()
-            //                                         from type in asm.GetTypes()
-            //                                         where type.IsClass && type.Name == opcode
-            //                                         select type).Single();
+            string[] files = Directory.GetFiles(Environment.CurrentDirectory, "*dll");
+            foreach (var file in files)
+            {
+                var v = AppDomain.CurrentDomain;
+                Assembly asm = Assembly.LoadFile(file);
 
-            var assemblyInheritingIInstruction = Assembly.GetExecutingAssembly().DefinedTypes;
-            //.Where(x => x.Name == opcode).FirstOrDefault();
+
+                if (asm != null)
+                {
+                    foreach (TypeInfo type in asm.DefinedTypes)
+                    {
+                        assemblyInheritingIInstruction.Add(type);
+                    }
+                }
+
+            }
 
             //checking the returned assembly if it contains data
             if (assemblyInheritingIInstruction == null)
@@ -73,6 +77,7 @@ internal static class JITCompiler
                         //creates an instance of the type and explicitly casts the retuned type to IInstruction type
 
                         instruction = (IInstruction)Activator.CreateInstance(assemblyType);
+
 
                         //terminates the loop;
                         //this break statement improves performance of a logic to prevent the loop from further running when the condition has been met
@@ -99,12 +104,29 @@ internal static class JITCompiler
 
         try
         {
-            //--> declare the targetted Interface
-            //--> Get all the loaded assemblies in this domain
-            //--> Get the types of these assemblies
+            //--> Get all the loaded C# types in the executing assembly
+            //--> Get the all the DLL files that are .NET
+            //--> Loop through these files, and add it to the list of C# Types of the executing assembly
             //--> find the type that implement IInstruction interface
 
-            var assemblyInheritingIInstruction = Assembly.GetExecutingAssembly().DefinedTypes;
+            var assemblyInheritingIInstruction = Assembly.GetExecutingAssembly().DefinedTypes.ToList();
+
+            string[] files = Directory.GetFiles(Environment.CurrentDirectory, "*dll");
+            foreach (var file in files)
+            {
+                var v = AppDomain.CurrentDomain;
+                Assembly asm = Assembly.LoadFile(file);
+
+                
+                if(asm != null)
+                {
+                    foreach (TypeInfo type in asm.DefinedTypes)
+                    {
+                        assemblyInheritingIInstruction.Add(type);
+                    }
+                }
+
+            }
 
             //checking the returned assembly if it contains data
             if (assemblyInheritingIInstruction == null)
@@ -120,7 +142,7 @@ internal static class JITCompiler
                     {
                         //creates an instance of the type and explicitly casts the retuned type to IInstruction type
 
-                        instruction = (IInstructionWithOperand)Activator.CreateInstance(assemblyType);                      
+                        instruction = (IInstructionWithOperand)Activator.CreateInstance(assemblyType);
                         instruction.Operands = operands;
 
                         //terminates the loop;

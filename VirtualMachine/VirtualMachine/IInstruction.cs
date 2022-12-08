@@ -11,9 +11,13 @@ public interface IInstruction
     /// </summary>
     void Run();
 
+
     /// <summary>
     /// Assigns a reference to the virtual machine 
     /// that is executing this instruction
     /// </summary>
-    SvmVirtualMachine VirtualMachine { set; }
+    
+
+    //SvmVirtualMachine VirtualMachine { set; }
+    IVirtualMachine VirtualMachine { set; get; }
 }

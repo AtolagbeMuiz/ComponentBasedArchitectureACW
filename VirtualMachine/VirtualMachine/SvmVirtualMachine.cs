@@ -1,7 +1,7 @@
 ﻿/// <summary>
 /// Implements the Simple Virtual Machine (SVM) virtual machine 
 /// </summary>
-public sealed class SvmVirtualMachine : BaseInstruction
+public sealed class SvmVirtualMachine : BaseInstruction, IVirtualMachine
 {
     #region Constants
     private const string CompilationErrorMessage = "An SVM compilation error has occurred at line {0}.\r\n\r\n{1}\r\n";
@@ -65,6 +65,7 @@ public sealed class SvmVirtualMachine : BaseInstruction
         {
             return stack;
         }
+        set { stack = VirtualMachine.Stack; }
     }
 
     /// <summary>
@@ -144,10 +145,14 @@ public sealed class SvmVirtualMachine : BaseInstruction
         DateTime start = DateTime.Now;
 
         #region TASK 2 - TO BE IMPLEMENTED BY THE STUDENT
-        //--> loop through program filed which is a list
+        //--> loop through program files which is a list
         foreach (var item in program)
         {
+            //assigning instance of Virtual machine
+            item.VirtualMachine = this;
+
             //--> call run on each item
+
             item.Run();
         }
         #region TASKS 5 & 7 - MAY REQUIRE MODIFICATION BY THE STUDENT

@@ -12,7 +12,10 @@ public abstract class BaseInstruction: IInstruction
     #endregion
 
     #region Fields
-    private SvmVirtualMachine virtualMachine = null;
+
+    //private SvmVirtualMachine virtualMachine = null;
+    private IVirtualMachine virtualMachine; //= null;
+
     #endregion
 
     #region Constructors
@@ -60,7 +63,8 @@ public abstract class BaseInstruction: IInstruction
     #region IInstruction Members
     public abstract void Run();
 
-    public SvmVirtualMachine VirtualMachine
+    //public SvmVirtualMachine VirtualMachine
+    public IVirtualMachine VirtualMachine
     {
         get
         {

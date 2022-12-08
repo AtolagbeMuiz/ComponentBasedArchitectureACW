@@ -10,7 +10,8 @@ AllocConsole();
 
 if (CommandLineIsValid(args))
 {
-    SvmVirtualMachine vm = new SvmVirtualMachine(args[0]);
+     //SvmVirtualMachine vm = new SvmVirtualMachine(args[0]);
+     IVirtualMachine vm = new SvmVirtualMachine(args[0]);
 }
 
 #region Validate command line

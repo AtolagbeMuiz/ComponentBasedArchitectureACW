@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29324.140
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SVM", "VirtualMachine\SVM.csproj", "{F7F514F7-AE73-4B3A-B75D-9827E9E4A1D4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SML Extensions", "SML Extensions\SML Extensions.csproj", "{DE302652-7C4B-4EF7-A70B-4582D4E1F73F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Debugger", "Debugger\Debugger.csproj", "{2FDBDE0A-5E27-441F-96C9-76E01FCC5E64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SVMUnitTest", "SVMUnitTest\SVMUnitTest.csproj", "{44434AA4-E29D-495C-B5BB-40D15C560837}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,18 @@ Global
 		{2FDBDE0A-5E27-441F-96C9-76E01FCC5E64}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2FDBDE0A-5E27-441F-96C9-76E01FCC5E64}.Release|x86.ActiveCfg = Release|Any CPU
 		{2FDBDE0A-5E27-441F-96C9-76E01FCC5E64}.Release|x86.Build.0 = Release|Any CPU
+		{44434AA4-E29D-495C-B5BB-40D15C560837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44434AA4-E29D-495C-B5BB-40D15C560837}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44434AA4-E29D-495C-B5BB-40D15C560837}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{44434AA4-E29D-495C-B5BB-40D15C560837}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{44434AA4-E29D-495C-B5BB-40D15C560837}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{44434AA4-E29D-495C-B5BB-40D15C560837}.Debug|x86.Build.0 = Debug|Any CPU
+		{44434AA4-E29D-495C-B5BB-40D15C560837}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44434AA4-E29D-495C-B5BB-40D15C560837}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44434AA4-E29D-495C-B5BB-40D15C560837}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{44434AA4-E29D-495C-B5BB-40D15C560837}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{44434AA4-E29D-495C-B5BB-40D15C560837}.Release|x86.ActiveCfg = Release|Any CPU
+		{44434AA4-E29D-495C-B5BB-40D15C560837}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

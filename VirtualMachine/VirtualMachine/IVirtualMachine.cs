@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace SVM.VirtualMachine
 {
-    internal interface IVirtualMachine
+    public interface IVirtualMachine
     {
+        //Properties
+        Stack Stack { get; set; }
+        int ProgramCounter { get; set; }
 
+        //Methods
         void Run();
     }
 }
